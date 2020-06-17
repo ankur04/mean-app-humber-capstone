@@ -24,12 +24,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
    extended: false
 }));
+app.use('/api', employeeRoute)
+app.use('/', express.static(path.join(__dirname, 'angular')));
 // var distDir = __dirname + "/dist/";
 // app.use(express.static(distDir));
 app.use(cors());
-app.use(express.static(path.join(__dirname, 'dist/mean-stack-crud-app')));
-app.use('/', express.static(path.join(__dirname, 'dist/mean-stack-crud-app')));
-app.use('/api', employeeRoute)
+app.use((req, res, next) => {
+   res.sendFile(path.join(__dirname, "angular", "index.html"));
+})
+
 
 // Create port
 const port = process.env.PORT || 4000;
