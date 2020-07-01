@@ -1,3 +1,70 @@
-<p>
-  initial-setup works!
-</p>
+<div class="register-form">
+  <form class="container">
+    <div class="row justify-content-center">
+      <div class="col-xs-6">
+        <img
+          class="register-page-logo login-page-logo"
+          src="/assets/images/user-logo.PNG"
+          alt="Avatar"
+        />
+      </div>
+      <div class="col-xs-6 user-head" style="padding-top: 30px;">
+        <h2 class="text-center innplat">Initiative</h2>
+        <h4 class="text-center facch">Initial Setup</h4>
+      </div>
+    </div>
+    <br />
+    <div>
+      <div class="input-box form-group form-inline row">
+        <label for="orgSize" class="col">Org Size : </label>
+        <select class="form-control col" id="orgSize">
+          <option>Small</option>
+          <option>Medium-Size</option>
+          <option>Large</option>
+        </select>
+      </div>
+      <div class="input-box form-group form-inline row">
+        <label for="environment" class="col">Environment : </label>
+        <select class="form-control col" id="environment">
+          <option>Project</option>
+          <option>Lean</option>
+          <option>EA</option>
+          <option>Change Mgmt.</option>
+          <option>Entrepreneurship</option>
+        </select>
+      </div>
+      <div class="input-box form-group form-inline row">
+        <label for="role" class="col">Role : </label>
+        <select class="form-control col" id="role">
+          <option>PM</option>
+          <option>Manager</option>
+          <option>Team Lead</option>
+          <option>Facilitator</option>
+          <option>Innovation Lead</option>
+        </select>
+      </div>
+      <div class="input-box form-group form-inline row">
+        <label for="team" class="col">Team : </label>
+        <select class="form-control col" id="team">
+          <option>Small (3-5)</option>
+          <option>Medium (6-15)</option>
+          <option>Large (16-60)</option>
+        </select>
+      </div>
+    </div>
+    <div class="input-box form-group row justify-content-center">
+      <button
+        type="submit"
+        class="btn btn-primary btn-block"
+        (click)="submit()"
+      >
+        Submit
+      </button>
+    </div>
+    <div class="input-box form-group row justify-content-center">
+      <button type="submit" class="btn btn-primary btn-block" (click)="back()">
+        Go Back
+      </button>
+    </div>
+  </form>
+</div>
