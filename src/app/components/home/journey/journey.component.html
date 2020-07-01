@@ -1,34 +1,13 @@
-<div class="register-form">
-  <form class="container">
-    <div class="row">
-      <div class="col-xs-6">
-        <img class="register-page-logo" src="/assets/images/user-logo.PNG" alt="Avatar">
-      </div>
-      <div class="col-xs-6 user-head">
-        <h2 class="text-center innplat">User</h2>
-        <h4 class="text-center facch">Initial Setup</h4>
-      </div>
+<div class="container card journey-card">
+  <div class="row">
+    <div class="col-xs-6">
+      <img class="register-page-logo" src="/assets/images/user-logo.PNG" alt="Avatar">
     </div>
-    <div class="input-box form-group">
-      <input type="text" class="form-control" placeholder="Firstname" required="required">
+    <div class="col-xs-6 user-head">
+      <h2 class="header">Pilot Project</h2>
+      <h4 class="subheader">Phase II</h4>
     </div>
-    <div class="input-box form-group">
-      <input type="text" class="form-control" placeholder="Lastname" required="required">
-    </div>
-    <div class="input-box form-group">
-      <input type="text" class="form-control" placeholder="Email" required="required">
-    </div>
-    <div class="input-box form-group">
-      <input type="password" class="form-control" placeholder="Password" required="required">
-    </div>
-    <div class="input-box form-group">
-      <input type="password" class="form-control" placeholder="Confirm Password" required="required">
-    </div>
-    <div class="input-box form-group">
-      <button type="submit" class="btn btn-primary btn-block" (click)="submit()">Submit</button>
-    </div>
-    <div class="input-box form-group">
-      <button type="submit" class="btn btn-primary btn-block" (click)="back()">Go Back</button>
-    </div>
-  </form>
+  </div>
+  <app-step [title]="'Step'" [stepNumber]="'4'" [percentage]="'30%'" [data]="this.stepData"></app-step>
+  <app-step [title]="'Next'" [stepNumber]="'5'" [percentage]="'0%'" [data]="this.nextData"></app-step>
 </div>

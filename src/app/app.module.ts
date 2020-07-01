@@ -13,6 +13,7 @@ import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
 import { InitialSetupComponent } from './components/home/initial-setup/initial-setup.component';
 import { JourneyComponent } from './components/home/journey/journey.component';
+import { StepComponent } from './components/home/journey/step/step.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { JourneyComponent } from './components/home/journey/journey.component';
     HomeComponent,
     RegisterComponent,
     InitialSetupComponent,
-    JourneyComponent
+    JourneyComponent,
+    StepComponent,
   ],
   imports: [
     BrowserModule,
