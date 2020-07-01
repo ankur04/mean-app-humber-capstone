@@ -11,6 +11,8 @@ import { LoginComponent } from './components/login/login.component';
 import { ApiService } from './service/api.service';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
+import { InitialSetupComponent } from './components/home/initial-setup/initial-setup.component';
+import { JourneyComponent } from './components/home/journey/journey.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { RegisterComponent } from './components/register/register.component';
     EmployeeEditComponent,
     LoginComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    InitialSetupComponent,
+    JourneyComponent
   ],
   imports: [
     BrowserModule,

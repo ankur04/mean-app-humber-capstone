@@ -15,12 +15,6 @@
 .user-head {
   margin: auto;
 }
-a {
-  color: blue !important;
-  text-decoration: underline !important;
-  cursor: pointer;
-}
-
 .register {
   margin-top: 15px;
 }

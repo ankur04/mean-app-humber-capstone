@@ -13,13 +13,6 @@
   border-radius: 50%;
   width: 100px;
 }
-
-a {
-  color: blue !important;
-  text-decoration: underline !important;
-  cursor: pointer;
-}
-
 .register {
   margin-top: 15px;
 }
