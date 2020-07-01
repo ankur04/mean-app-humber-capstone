@@ -1,0 +1,17 @@
+.input-box {
+  max-width: 400px;
+}
+.container {
+  max-width: 400px;
+}
+.login-page-logo {
+  margin: 20px;
+  border-radius: 50%;
+  width: 100px;
+}
+
+.register-page-logo {
+  margin: 20px;
+  border-radius: 50%;
+  width: 100px;
+}
