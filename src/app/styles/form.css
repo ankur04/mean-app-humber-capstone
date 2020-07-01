@@ -15,3 +15,15 @@
   border-radius: 50%;
   width: 100px;
 }
+
+.header {
+  color: #007bff;
+}
+
+.sub-header {
+  color: grey;
+}
+
+.user-head {
+  margin: auto;
+}
