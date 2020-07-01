@@ -2,6 +2,9 @@ html {
   font-size: 14px;
   overflow-x: hidden;
 }
+body {
+  background-color: #dedede;
+}
 
 .form-control:focus {
   box-shadow: none;
@@ -32,7 +35,7 @@ html {
 
 .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
 .btn-outline-primary:not(:disabled):not(.disabled):active:focus,
-.show>.btn-outline-primary.dropdown-toggle:focus {
+.show > .btn-outline-primary.dropdown-toggle:focus {
   box-shadow: none;
 }
 
