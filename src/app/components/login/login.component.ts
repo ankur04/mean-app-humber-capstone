@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { getEmail, setEmail } from 'src/app/helpers/storage.helper';
+import { User } from 'src/app/model/User';
+import { LoginService } from 'src/app/service/login/login.service';
 
 @Component({
   selector: 'app-login',
@@ -8,18 +11,29 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  private user: User = new User();
+  private error: string;
+  private isRemberMeChecked: boolean;
+
+  constructor(private router: Router, private loginService: LoginService) { }
 
   ngOnInit() {
+    this.user.email = getEmail();
   }
 
   login() {
-    console.log("login")
-    this.router.navigate(['home']);
+    this.loginService.login(this.user)
+      .subscribe(() => {
+        if (this.isRemberMeChecked) {
+          setEmail(this.user.email);
+        }
+        this.router.navigate(['/home'])
+      },
+        (err) => this.error = "Error: " + err.error
+      );
   }
 
   register() {
-    console.log("register")
     this.router.navigate(['register']);
   }
 }

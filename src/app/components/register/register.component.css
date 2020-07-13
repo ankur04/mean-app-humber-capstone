@@ -4,3 +4,9 @@
 .register {
   margin-top: 15px;
 }
+.error {
+  background-color: #ea4444;
+  color: white;
+  padding: 6px;
+  margin-bottom: 10px;
+}

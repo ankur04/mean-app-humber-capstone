@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { getUser, removeUser } from './helpers/storage.helper';
+import { AppService } from './service/app.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'mean-stack-crud-app';
+
+  constructor(private appService: AppService, private router: Router) {
+    appService.user = getUser();
+  }
+
+  logout() {
+    removeUser(this.appService);
+    this.router.navigate(["/login"]);
+  }
+
 }
