@@ -1,19 +1,25 @@
 <div class="login-form">
-  <form class="container">
+  <form class="container" (ngSubmit)="login()" #loginForm="ngForm">
     <h2 class="text-center innplat">Innovation Platform</h2>
     <h4 class="text-center facch">facilitating change</h4>
     <img class="login-page-logo" src="/assets/images/login-page-logo.PNG" alt="Avatar">
     <div class="input-box form-group">
-      <input type="text" class="form-control" placeholder="Username" required="required">
+      <input type="text" class="form-control" [(ngModel)]="user.email" name="email" placeholder="Username"
+        required="required">
     </div>
     <div class="input-box form-group">
-      <input type="password" class="form-control" placeholder="Password" required="required">
+      <input type="password" class="form-control" [(ngModel)]="user.password" name="password" placeholder="Password"
+        required="required">
+    </div>
+    <div class="error" *ngIf="error">
+      {{error}}
     </div>
     <div class="input-box form-group">
-      <button type="submit" class="btn btn-primary btn-block" (click)="login()">Log in</button>
+      <button type="submit" class="btn btn-primary btn-block" [disabled]="!loginForm.form.valid">Log in</button>
     </div>
     <div class="clearfix">
-      <label class="float-left form-check-label"><input type="checkbox"> Remember me</label>
+      <label class="float-left form-check-label"><input type="checkbox" [(ngModel)]="isRemberMeChecked"
+          name="isRemberMeChecked"> Remember me</label>
       <a class="float-right">Forgot Password?</a>
     </div>
   </form>

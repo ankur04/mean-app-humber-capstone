@@ -20,8 +20,6 @@ mongoose
     }
   );
 
-// Setting up port with express js
-const employeeRoute = require("../backend/routes/employee.route");
 const app = express();
 
 app.use((req, res, next) => {
@@ -39,7 +37,13 @@ app.use(
     extended: false,
   })
 );
-app.use("/api", employeeRoute);
+
+/* add all routes here */
+const registerRoute = require("../backend/routes/register.route");
+const loginRoute = require("../backend/routes/login.route");
+app.use("/api", registerRoute);
+app.use("/api", loginRoute);
+
 app.use("/", express.static(path.join(__dirname, "angular")));
 // var distDir = __dirname + "/dist/";
 // app.use(express.static(distDir));

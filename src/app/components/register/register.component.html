@@ -1,5 +1,5 @@
 <div class="register-form">
-  <form class="container">
+  <form class="container" (ngSubmit)="submit()" #registerForm="ngForm">
     <div class="row">
       <div class="col-xs-6">
         <img class="register-page-logo" src="/assets/images/user-logo.PNG" alt="Avatar">
@@ -10,25 +10,33 @@
       </div>
     </div>
     <div class="input-box form-group">
-      <input type="text" class="form-control" placeholder="Firstname" required="required">
+      <input type="text" class="form-control" [(ngModel)]="user.firstName" name="fname" placeholder="Firstname"
+        required="required">
     </div>
     <div class="input-box form-group">
-      <input type="text" class="form-control" placeholder="Lastname" required="required">
+      <input type="text" class="form-control" [(ngModel)]="user.lastName" name="lname" placeholder="Lastname"
+        required="required">
     </div>
     <div class="input-box form-group">
-      <input type="text" class="form-control" placeholder="Email" required="required">
+      <input type="email" class="form-control" [(ngModel)]="user.email" name="email" placeholder="Email"
+        required="required">
     </div>
     <div class="input-box form-group">
-      <input type="password" class="form-control" placeholder="Password" required="required">
+      <input type="password" class="form-control" [(ngModel)]="user.password" name="password" placeholder="Password"
+        required="required">
     </div>
     <div class="input-box form-group">
-      <input type="password" class="form-control" placeholder="Confirm Password" required="required">
+      <input type="password" class="form-control" [(ngModel)]="user.confirmPassword" name="confirm-password"
+        placeholder="Confirm Password" required="required">
+    </div>
+    <div class="error" *ngIf="error">
+      {{error}}
     </div>
     <div class="input-box form-group">
-      <button type="submit" class="btn btn-primary btn-block" (click)="submit()">Submit</button>
+      <button type="submit" class="btn btn-primary btn-block" [disabled]="!registerForm.form.valid">Submit</button>
     </div>
     <div class="input-box form-group">
-      <button type="submit" class="btn btn-primary btn-block" (click)="back()">Go Back</button>
+      <button class="btn btn-primary btn-block" (click)="back()">Go Back</button>
     </div>
   </form>
 </div>
