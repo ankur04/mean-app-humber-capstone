@@ -10,7 +10,6 @@ loginRoute.route("/login").post((req, res, next) => {
     } else if (data.length == 0) {
       return next(new Error("Email not registered"));
     } else {
-      console.log(data)
       if (data.password == req.body.password) {
         return res.json(data);
       } else {
