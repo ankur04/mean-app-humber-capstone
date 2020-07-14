@@ -37,4 +37,18 @@ export class InitialSetupService {
         })
       );
   }
+
+  deleteSetup(setupId) {
+    return this.http
+      .delete(this.appService.baseUri + "/initialSetup/" + setupId)
+      .pipe(
+        tap((data) => {
+          console.log(data);
+          return data;
+        }),
+        catchError((err) => {
+          throw err;
+        })
+      );
+  }
 }

@@ -9,13 +9,10 @@ import { User } from "src/app/model/User";
   styleUrls: ["./register.component.css", "./../../styles/form.css"],
 })
 export class RegisterComponent implements OnInit {
-  private user: User = new User();
-  private error: string;
+  public user: User = new User();
+  public error: string;
 
-  constructor(
-    private router: Router,
-    private registerService: RegisterService
-  ) {}
+  constructor(public router: Router, public registerService: RegisterService) {}
 
   ngOnInit() {}
 

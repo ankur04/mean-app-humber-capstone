@@ -11,13 +11,13 @@ import { getUser } from "src/app/helpers/storage.helper";
   styleUrls: ["./initial-setup.component.css", "./../../../styles/form.css"],
 })
 export class InitialSetupComponent implements OnInit {
-  private initialSetup: Setup = new Setup();
-  private error: string;
+  public initialSetup: Setup = new Setup();
+  public error: string;
 
   constructor(
-    private router: Router,
-    private initialSetupService: InitialSetupService,
-    private appService: AppService
+    public router: Router,
+    public initialSetupService: InitialSetupService,
+    public appService: AppService
   ) {
     const user = getUser();
     this.initialSetup.userId = user.user._id;

@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { InitialSetupService } from "src/app/service/initialSetup/InitialSetup.service";
 import { Setup } from "src/app/model/Setup";
 import { getUser } from "src/app/helpers/storage.helper";
+import { load } from "@angular/core/src/render3";
 
 @Component({
   selector: "app-start-journey",
@@ -10,17 +11,22 @@ import { getUser } from "src/app/helpers/storage.helper";
   styleUrls: ["./start-journey.component.css"],
 })
 export class StartJourneyComponent implements OnInit {
-  private initialSetup: Setup = new Setup();
-  private initialSetupList: Setup[];
+  public initialSetup: Setup = new Setup();
+  public initialSetupList: Setup[];
+  public deleteSuccess: Boolean = false;
 
   constructor(
-    private router: Router,
-    private initialSetupService: InitialSetupService
+    public router: Router,
+    public initialSetupService: InitialSetupService
   ) {}
 
   ngOnInit() {
-    const user = getUser();
+    this.loadData();
+  }
 
+  loadData() {
+    const user = getUser();
+    this.deleteSuccess = false;
     this.initialSetupService.retrieveSetup(user.user._id).subscribe(
       (data) => {
         this.initialSetupList = data as Setup[];
@@ -32,7 +38,21 @@ export class StartJourneyComponent implements OnInit {
     );
   }
 
-  startJourney() {
+  startJourney(setupId) {
     this.router.navigate(["/home/journey"]);
+  }
+
+  deleteJourney(setupId) {
+    this.initialSetupService.deleteSetup(setupId).subscribe(
+      (data) => {
+        console.log("success");
+        this.deleteSuccess = true;
+        this.loadData();
+      },
+      (err) => {
+        this.deleteSuccess = false;
+        console.log(err);
+      }
+    );
   }
 }
