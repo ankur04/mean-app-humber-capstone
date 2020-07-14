@@ -1,32 +1,34 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { RegisterService } from 'src/app/service/register/register.service';
-import { User } from 'src/app/model/User';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { RegisterService } from "src/app/service/register/register.service";
+import { User } from "src/app/model/User";
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css', './../../styles/form.css']
+  selector: "app-register",
+  templateUrl: "./register.component.html",
+  styleUrls: ["./register.component.css", "./../../styles/form.css"],
 })
 export class RegisterComponent implements OnInit {
-
   private user: User = new User();
   private error: string;
 
-  constructor(private router: Router, private registerService: RegisterService) { }
+  constructor(
+    private router: Router,
+    private registerService: RegisterService
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   submit() {
-    this.registerService.register(this.user)
-      .subscribe(() => this.router.navigate(['/home']),
-        (err) => this.error = "Error: " + err.error
-      );
+    this.registerService.register(this.user).subscribe(
+      () => this.router.navigate(["/home"]),
+      (err) => {
+        this.error = "Error: " + err.error;
+      }
+    );
   }
 
   back() {
-    this.router.navigate(['/login']);
+    this.router.navigate(["/login"]);
   }
-
 }

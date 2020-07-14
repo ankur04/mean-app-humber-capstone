@@ -1,5 +1,5 @@
 <div class="register-form">
-  <form class="container">
+  <form class="container" (ngSubmit)="submit()" #setupForm="ngForm">
     <div class="row justify-content-center">
       <div class="col-xs-6">
         <img
@@ -17,48 +17,92 @@
     <div>
       <div class="input-box form-group form-inline row">
         <label for="orgSize" class="col">Org Size : </label>
-        <select class="form-control col" id="orgSize">
-          <option>Small</option>
-          <option>Medium-Size</option>
-          <option>Large</option>
+        <select
+          class="form-control col"
+          id="organization"
+          [(ngModel)]="initialSetup.organization"
+          name="organization"
+          required="required"
+        >
+          <option (ngValue)="(smallOrg)">Small</option>
+          <option (ngValue)="(mediumSizeOrg)">Medium-Size</option>
+          <option (ngValue)="(largeOrg)">Large</option>
         </select>
       </div>
       <div class="input-box form-group form-inline row">
         <label for="environment" class="col">Environment : </label>
-        <select class="form-control col" id="environment">
-          <option>Project</option>
-          <option>Lean</option>
-          <option>EA</option>
-          <option>Change Mgmt.</option>
-          <option>Entrepreneurship</option>
+        <select
+          class="form-control col"
+          id="environment"
+          [(ngModel)]="initialSetup.environment"
+          name="environment"
+          required="required"
+        >
+          <option (ngValue)="(project)">Project</option>
+          <option (ngValue)="(lean)">Lean</option>
+          <option (ngValue)="(EA)">EA</option>
+          <option (ngValue)="(changeMgmt)">Change Mgmt.</option>
+          <option (ngValue)="(entrepreneurship)">Entrepreneurship</option>
         </select>
       </div>
       <div class="input-box form-group form-inline row">
         <label for="role" class="col">Role : </label>
-        <select class="form-control col" id="role">
-          <option>PM</option>
-          <option>Manager</option>
-          <option>Team Lead</option>
-          <option>Facilitator</option>
-          <option>Innovation Lead</option>
+        <select
+          class="form-control col"
+          id="role"
+          [(ngModel)]="initialSetup.role"
+          name="role"
+          required="required"
+        >
+          <option (ngValue)="(pm)">PM</option>
+          <option (ngValue)="(manager)">Manager</option>
+          <option (ngValue)="(teamLead)">Team Lead</option>
+          <option (ngValue)="(facilitator)">Facilitator</option>
+          <option (ngValue)="(innovationLead)">Innovation Lead</option>
         </select>
       </div>
       <div class="input-box form-group form-inline row">
         <label for="team" class="col">Team : </label>
-        <select class="form-control col" id="team">
-          <option>Small (3-5)</option>
-          <option>Medium (6-15)</option>
-          <option>Large (16-60)</option>
+        <select
+          class="form-control col"
+          id="team"
+          [(ngModel)]="initialSetup.team"
+          name="team"
+          required="required"
+        >
+          <option (ngValue)="(small)">Small (3-5)</option>
+          <option (ngValue)="(medium)">Medium (6-15)</option>
+          <option (ngValue)="(large)">Large (16-60)</option>
+        </select>
+      </div>
+
+      <div class="input-box form-group form-inline row">
+        <label for="sector" class="col">Industry Sector : </label>
+        <select
+          class="form-control col"
+          id="sector"
+          [(ngModel)]="initialSetup.sector"
+          name="sector"
+          required="required"
+        >
+          <option (ngValue)="(informationTechnology)"
+            >Information Technology</option
+          >
+          <option (ngValue)="(healthCare)">HealthCare</option>
         </select>
       </div>
     </div>
     <div class="input-box form-group row justify-content-center">
-      <button type="submit" class="btn btn-primary btn-block">
+      <button
+        type="submit"
+        class="btn btn-primary btn-block"
+        [disabled]="!setupForm.form.valid"
+      >
         Submit
       </button>
     </div>
     <div class="input-box form-group row justify-content-center">
-      <button type="submit" class="btn btn-primary btn-block">
+      <button type="button" (click)="back()" class="btn btn-primary btn-block">
         Go Back
       </button>
     </div>
