@@ -28,7 +28,6 @@ export class StartJourneyComponent implements OnInit {
     this.initialSetupService.retrieveSetup(user.user._id).subscribe(
       (data) => {
         this.initialSetupList = data as Setup[];
-        console.log(this.initialSetupList);
       },
       (err) => {
         console.log(err);
@@ -43,7 +42,6 @@ export class StartJourneyComponent implements OnInit {
   deleteJourney(setupId) {
     this.initialSetupService.deleteSetup(setupId).subscribe(
       (data) => {
-        console.log("success");
         this.loadData();
       },
       (err) => {

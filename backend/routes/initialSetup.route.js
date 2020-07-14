@@ -19,23 +19,17 @@ module.exports = (app) => {
 
     app.get('/api/initialSetup/:userId', async (req, res) => {
         try {
-            console.log("inside find setup");
             const userId = req.params.userId;
-            console.log(userId);
             const setups = await InitialSetup.find({ userId });
-            console.log(setups)
             res.status(200).send({ setups });
         } catch (e) {
-            console.log(e)
             res.status(500).send(e);
         }
     });
 
     app.delete('/api/initialSetup/:setupId', async (req, res) => {
         try {
-            console.log("inside find setup");
             const setupId = req.params.setupId;
-            console.log(setupId);
             const setup = await InitialSetup.findOne({ _id: setupId });
             if (setup) {
                 await setup.delete({ _id: setupId });
@@ -44,7 +38,6 @@ module.exports = (app) => {
             }
             res.status(200).send({ setup });
         } catch (e) {
-            console.log(e)
             res.status(500).send(e);
         }
     });
