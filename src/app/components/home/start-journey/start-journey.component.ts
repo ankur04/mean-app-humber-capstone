@@ -13,7 +13,6 @@ import { load } from "@angular/core/src/render3";
 export class StartJourneyComponent implements OnInit {
   public initialSetup: Setup = new Setup();
   public initialSetupList: Setup[];
-  public deleteSuccess: Boolean = false;
 
   constructor(
     public router: Router,
@@ -26,7 +25,6 @@ export class StartJourneyComponent implements OnInit {
 
   loadData() {
     const user = getUser();
-    this.deleteSuccess = false;
     this.initialSetupService.retrieveSetup(user.user._id).subscribe(
       (data) => {
         this.initialSetupList = data as Setup[];
@@ -46,11 +44,9 @@ export class StartJourneyComponent implements OnInit {
     this.initialSetupService.deleteSetup(setupId).subscribe(
       (data) => {
         console.log("success");
-        this.deleteSuccess = true;
         this.loadData();
       },
       (err) => {
-        this.deleteSuccess = false;
         console.log(err);
       }
     );
