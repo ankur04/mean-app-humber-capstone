@@ -27,7 +27,7 @@ export class InitialSetupComponent implements OnInit {
 
   submit() {
     this.initialSetupService.initialSetup(this.initialSetup).subscribe(
-      () => this.router.navigate(["/home/startJourney"]),
+      () => this.router.navigate(["/home/journeys"]),
       (err) => {
         this.error = "Error: " + err.error;
       }
