@@ -1,11 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-step',
   templateUrl: './step.component.html',
   styleUrls: ['./step.component.css']
 })
-export class StepComponent implements OnInit {
+export class StepComponent {
 
   @Input()
   title = "Step";
@@ -19,9 +19,7 @@ export class StepComponent implements OnInit {
   @Input()
   data = "";
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  @Input()
+  skill;
 
 }

@@ -9,7 +9,7 @@
     </div>
   </div>
   <app-step [title]="'Step'" [stepNumber]="this.waypoint?.step_no" [percentage]="this.percentage"
-    [data]="this.activity?.activity_desc">
+    [data]="this.activity?.activity_desc" [skill]="this.skill">
   </app-step>
   <app-step *ngIf="this.nextWaypoint?.step_no" [title]="'Next'" [stepNumber]="this.nextWaypoint?.step_no"
     [percentage]="this.nextPercentage" [data]="this.nextActivity?.activity_desc">

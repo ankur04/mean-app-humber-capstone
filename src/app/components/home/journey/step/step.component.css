@@ -19,6 +19,10 @@
 .data {
   padding: 5px;
 }
-.step-number{
+.step-number {
   color: darkorange;
+}
+a {
+  text-decoration: underline !important;
+  color: #007bff !important;
 }

@@ -1,0 +1,27 @@
+.journey-card {
+  background-color: #ececec;
+}
+
+.journey-page-logo {
+  margin: 5px;
+  border-radius: 50%;
+  width: 100px;
+}
+.skill-name {
+  text-align: center;
+}
+.align-skill-middle {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.skill-desc {
+  margin: 0px;
+  padding: 5px;
+}
+.row {
+  margin-top: 5px;
+}
+
+.skill-card {
+  padding-bottom: 10px;
+}

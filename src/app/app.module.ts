@@ -11,6 +11,7 @@ import { StepComponent } from "./components/home/journey/step/step.component";
 import { LoginComponent } from "./components/login/login.component";
 import { RegisterComponent } from "./components/register/register.component";
 import { StartJourneyComponent } from "./components/home/start-journey/start-journey.component";
+import { SkillComponent } from './components/home/journey/skill/skill.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { StartJourneyComponent } from "./components/home/start-journey/start-jou
     JourneyComponent,
     StepComponent,
     StartJourneyComponent,
+    SkillComponent,
   ],
   imports: [
     BrowserModule,

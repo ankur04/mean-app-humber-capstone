@@ -1,0 +1,30 @@
+<div class="container card journey-card skill-card">
+  <div class="row">
+    <div class="col-xs-6">
+      <img class="journey-page-logo" src="/assets/images/user-logo.PNG" alt="Avatar">
+    </div>
+    <div class="col-xs-6 user-head">
+      <h2 class="header">Pilot Project</h2>
+      <h4 class="subheader">Phase {{this.phase?.no}} - {{this.phase?.name}}</h4>
+    </div>
+  </div>
+  <div class="row">
+    <h5 class="col-4 col-sm-3 title">Step</h5>
+    <div class="col-8 col-sm-3">
+      <div class="numberCircle step-number"><b>{{this.stepNumber}}</b></div>
+    </div>
+  </div>
+  <div class="row">
+    <h5 class="col-5 col-sm-3 title">Skill</h5>
+    <div class="col-7 col-sm-3 align-skill-middle">
+      <div class="card skill-name">{{this.skillName}}</div>
+    </div>
+  </div>
+  <div class="row card skill-desc">{{this.skillDesc}} <a>more</a></div>
+  <div class="row" *ngFor="let exercise of this.exercises; let i = index">
+    <h5 class="col-5 col-sm-3 title">EXERCISE {{i+1}}</h5>
+    <div class="col-7 col-sm-3 align-skill-middle">
+      <div class="card skill-name">{{exercise}}</div>
+    </div>
+  </div>
+</div>
