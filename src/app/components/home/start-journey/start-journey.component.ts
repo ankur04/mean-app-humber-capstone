@@ -1,9 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { InitialSetupService } from "src/app/service/initialSetup/InitialSetup.service";
+import { getUser, sessionSetItem } from "src/app/helpers/storage.helper";
 import { Setup } from "src/app/model/Setup";
-import { getUser } from "src/app/helpers/storage.helper";
-import { load } from "@angular/core/src/render3";
+import { InitialSetupService } from "src/app/service/initialSetup/InitialSetup.service";
 
 @Component({
   selector: "app-start-journey",
@@ -17,7 +16,7 @@ export class StartJourneyComponent implements OnInit {
   constructor(
     public router: Router,
     public initialSetupService: InitialSetupService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.loadData();
@@ -36,7 +35,8 @@ export class StartJourneyComponent implements OnInit {
   }
 
   startJourney(setupId) {
-    this.router.navigate(["/home/journey"]);
+    sessionSetItem("journeyId", setupId);
+    this.router.navigate(["/home/journey"], { state: { journeyId: setupId } });
   }
 
   deleteJourney(setupId) {

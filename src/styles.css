@@ -6,11 +6,11 @@ body {
   background-color: #dedede;
 }
 
-a {
+/* a {
   color: blue !important;
   text-decoration: underline !important;
   cursor: pointer;
-}
+} */
 
 .form-control:focus {
   box-shadow: none;

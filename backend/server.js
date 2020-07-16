@@ -39,15 +39,12 @@ app.use(
 );
 
 /* add all routes here */
-//const registerRoute = require("../backend/routes/register.route");
-//const loginRoute = require("../backend/routes/login.route");
 
 require("../backend/routes/login.route")(app);
 require("../backend/routes/register.route")(app);
 require("../backend/routes/initialSetup.route")(app);
-
-//app.use("/api", registerRoute);
-//app.use("/api", loginRoute);
+require("../backend/routes/journey.route")(app);
+require("../backend/routes/template.route")(app);
 
 app.use("/", express.static(path.join(__dirname, "angular")));
 // var distDir = __dirname + "/dist/";

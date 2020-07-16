@@ -2,10 +2,7 @@
   <div class="row">
     <div *ngIf="initialSetupList; then thenBlock; else elseBlock"></div>
     <ng-template #thenBlock>
-      <div
-        class="col-lg-3 col-sm-6"
-        *ngFor="let singleSetup of initialSetupList.setups"
-      >
+      <div class="col-lg-3 col-sm-6" *ngFor="let singleSetup of initialSetupList.setups">
         <div class="card hovercard">
           <div class="cardheader"></div>
           <div class="avatar">
@@ -19,18 +16,10 @@
             <div class="desc">Sector : {{ singleSetup.sector }}</div>
           </div>
           <div class="bottom">
-            <button
-              type="button"
-              class="btn btn-primary"
-              (click)="startJourney(singleSetup._id)"
-            >
+            <button type="button" class="btn btn-primary" (click)="startJourney(singleSetup._id)">
               Start Journey
             </button>
-            <button
-              type="button"
-              class="btn btn-danger"
-              (click)="deleteJourney(singleSetup._id)"
-            >
+            <button type="button" class="btn btn-danger delete-button" (click)="deleteJourney(singleSetup._id)">
               Delete
             </button>
           </div>

@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const User = require("./User");
 
-// Define collection and schema
-let initialSetupSchema = new Schema(
+let phaseSchema = new Schema(
   {
     organization: {
       type: String,
@@ -21,15 +21,15 @@ let initialSetupSchema = new Schema(
     },
     userId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: User,
       required: true,
     },
   },
   {
-    collection: "InitialSetup",
+    collection: "phases",
   }
 );
 
-const InitialSetup = mongoose.model("InitialSetup", initialSetupSchema);
+const Phase = mongoose.model("Phase", phaseSchema);
 
-module.exports = InitialSetup;
+module.exports = Phase;

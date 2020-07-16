@@ -1,3 +1,5 @@
-<a (click)="navigate('/home/initial-setup')">Initial Setup</a><br />
-<a (click)="navigate('/home/startJourney')">Start Journey</a>
-<router-outlet></router-outlet>
+<a (click)="navigate('/home/initial-setup')" class="badge badge-primary create-journey">Create a Journey</a><br />
+<a (click)="navigate('/home/startJourney')" class="badge badge-success create-journey">View Journey</a>
+<div class="home">
+    <router-outlet></router-outlet>
+</div>
