@@ -15,18 +15,24 @@ export class SkillComponent implements OnInit {
   skillDesc;
   exercises;
 
+  phaseno;
+  phasename;
+
+  skillData = { skill: { skill_desc: ":", exercises_data: { exercises: [] } }, phaseno: "", phasename: "" };
+
   constructor() { }
 
   ngOnInit() {
-    let skill = { skill_desc: ":", exercises_data: { exercises: [] } };
-    if (history.state.skill) {
-      skill = history.state.skill
-      sessionSetItem("skill", skill);
+    if (history.state.skillData) {
+      this.skillData = history.state.skillData
+      sessionSetItem("skillData", this.skillData);
     } else {
-      skill = sessionGetItem("skill");
+      this.skillData = sessionGetItem("skillData");
     }
-    this.exercises = skill.exercises_data.exercises;
-    this.setSkill(skill.skill_desc);
+    this.exercises = this.skillData.skill.exercises_data.exercises;
+    this.phaseno = this.skillData.phaseno
+    this.phasename = this.skillData.phasename;
+    this.setSkill(this.skillData.skill.skill_desc);
   }
 
   setSkill(skill_desc) {

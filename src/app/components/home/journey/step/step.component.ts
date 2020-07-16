@@ -22,4 +22,10 @@ export class StepComponent {
   @Input()
   skill;
 
+  @Input()
+  phaseno;
+
+  @Input()
+  phasename;
+
 }
