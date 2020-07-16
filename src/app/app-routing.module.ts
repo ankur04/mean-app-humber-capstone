@@ -3,10 +3,11 @@ import { RouterModule, Routes } from "@angular/router";
 import { HomeComponent } from "./components/home/home.component";
 import { InitialSetupComponent } from "./components/home/initial-setup/initial-setup.component";
 import { JourneyComponent } from "./components/home/journey/journey.component";
+import { SkillComponent } from './components/home/journey/skill/skill.component';
+import { StartJourneyComponent } from "./components/home/start-journey/start-journey.component";
 import { LoginComponent } from "./components/login/login.component";
 import { RegisterComponent } from "./components/register/register.component";
 import { AuthGuard } from "./service/authentication/auth-guard.service";
-import { StartJourneyComponent } from "./components/home/start-journey/start-journey.component";
 
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "login" },
@@ -17,6 +18,7 @@ const routes: Routes = [
     children: [
       { path: "initial-setup", component: InitialSetupComponent },
       { path: "journey", component: JourneyComponent },
+      { path: "skill", component: SkillComponent },
       { path: "startJourney", component: StartJourneyComponent },
     ],
     canActivateChild: [AuthGuard],
@@ -29,4 +31,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
