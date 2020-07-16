@@ -29,7 +29,6 @@ export class InitialSetupService {
       .get(this.appService.baseUri + "/initialSetup/" + userId)
       .pipe(
         tap((data) => {
-          console.log(data);
           return data;
         }),
         catchError((err) => {
@@ -43,7 +42,6 @@ export class InitialSetupService {
       .delete(this.appService.baseUri + "/initialSetup/" + setupId)
       .pipe(
         tap((data) => {
-          console.log(data);
           return data;
         }),
         catchError((err) => {

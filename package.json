@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "ng serve",
+    "backend:dev": "nodemon ./backend/server.js",
     "start": "node backend/server.js",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "backend:dev": "nodemon ./backend/server.js"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {

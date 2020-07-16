@@ -10,6 +10,14 @@ export class AppService {
 
   user: User;
 
+  templates;
+
   constructor(private http: HttpClient) { }
+
+  getTemplate() {
+    this.http.get(this.baseUri + "/template").subscribe(data => {
+      this.templates = data;
+    });
+  }
 
 }

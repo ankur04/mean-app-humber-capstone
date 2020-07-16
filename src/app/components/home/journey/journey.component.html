@@ -1,13 +1,17 @@
 <div class="container card journey-card">
   <div class="row">
     <div class="col-xs-6">
-      <img class="register-page-logo" src="/assets/images/user-logo.PNG" alt="Avatar">
+      <img class="journey-page-logo" src="/assets/images/user-logo.PNG" alt="Avatar">
     </div>
     <div class="col-xs-6 user-head">
       <h2 class="header">Pilot Project</h2>
-      <h4 class="subheader">Phase II</h4>
+      <h4 class="subheader">Phase {{this.phase?.no}} - {{this.phase?.name}}</h4>
     </div>
   </div>
-  <app-step [title]="'Step'" [stepNumber]="'4'" [percentage]="'30%'" [data]="this.stepData"></app-step>
-  <app-step [title]="'Next'" [stepNumber]="'5'" [percentage]="'0%'" [data]="this.nextData"></app-step>
+  <app-step [title]="'Step'" [stepNumber]="this.waypoint?.step_no" [percentage]="this.percentage"
+    [data]="this.activity?.activity_desc">
+  </app-step>
+  <app-step *ngIf="this.nextWaypoint?.step_no" [title]="'Next'" [stepNumber]="this.nextWaypoint?.step_no"
+    [percentage]="this.nextPercentage" [data]="this.nextActivity?.activity_desc">
+  </app-step>
 </div>

@@ -1,4 +1,9 @@
 .journey-card {
   background-color: #ececec;
-  padding: 20px;
+}
+
+.journey-page-logo {
+  margin: 5px;
+  border-radius: 50%;
+  width: 100px;
 }
