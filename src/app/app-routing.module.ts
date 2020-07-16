@@ -12,14 +12,15 @@ import { AuthGuard } from "./service/authentication/auth-guard.service";
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "login" },
   { path: "login", component: LoginComponent },
+  { path: "home", pathMatch: "full", redirectTo: "home/journeys" },
   {
     path: "home",
     component: HomeComponent,
     children: [
+      { path: "journeys", component: StartJourneyComponent },
       { path: "initial-setup", component: InitialSetupComponent },
       { path: "journey", component: JourneyComponent },
       { path: "skill", component: SkillComponent },
-      { path: "startJourney", component: StartJourneyComponent },
     ],
     canActivateChild: [AuthGuard],
     canActivate: [AuthGuard],
