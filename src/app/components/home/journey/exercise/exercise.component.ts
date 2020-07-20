@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { sessionGetItem, sessionSetItem } from 'src/app/helpers/storage.helper';
 
 @Component({
   selector: 'app-exercise',
@@ -7,15 +8,28 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ExerciseComponent implements OnInit {
 
-  @Input()
-  skill;
+  phaseno;
+  phasename;
 
-  @Input()
-  exercise;
+  skillName;
+  exerciseName;
+
+  exerciseData;
 
   constructor() { }
 
   ngOnInit() {
+    if (history.state.exerciseData) {
+      this.exerciseData = history.state.exerciseData
+      sessionSetItem("exerciseData", this.exerciseData);
+    } else {
+      this.exerciseData = sessionGetItem("exerciseData");
+    }
+    console.log(this.exerciseData)
+    this.phaseno = this.exerciseData.phaseno;
+    this.phasename = this.exerciseData.phasename;
+    this.skillName = this.exerciseData.skillName;
+    this.exerciseName = this.exerciseData.exerciseName;
   }
 
 }
