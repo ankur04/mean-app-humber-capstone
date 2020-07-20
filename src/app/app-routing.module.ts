@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { HomeComponent } from "./components/home/home.component";
 import { InitialSetupComponent } from "./components/home/initial-setup/initial-setup.component";
+import { ExerciseComponent } from './components/home/journey/exercise/exercise.component';
 import { JourneyComponent } from "./components/home/journey/journey.component";
 import { SkillComponent } from './components/home/journey/skill/skill.component';
 import { StartJourneyComponent } from "./components/home/start-journey/start-journey.component";
@@ -17,10 +18,11 @@ const routes: Routes = [
     path: "home",
     component: HomeComponent,
     children: [
-      { path: "journeys", component: StartJourneyComponent },
       { path: "initial-setup", component: InitialSetupComponent },
+      { path: "journeys", component: StartJourneyComponent },
       { path: "journey", component: JourneyComponent },
       { path: "skill", component: SkillComponent },
+      { path: "exercise", component: ExerciseComponent },
     ],
     canActivateChild: [AuthGuard],
     canActivate: [AuthGuard],

@@ -25,3 +25,12 @@
 .skill-card {
   padding-bottom: 10px;
 }
+
+.skill-number-circle {
+  width: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  background-color: white;
+  font-size: 16px;
+}

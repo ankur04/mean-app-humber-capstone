@@ -26,7 +26,6 @@ export class JourneyService {
         const nextWaypoint = this.getWaypoint(next, nextPhase.waypoints);
         const nextActivity = this.getActivity(next, nextWaypoint.activities);
         const nextSkill = this.getSkill(next, nextActivity.skills);
-        console.log(nextWaypoint)
 
         return {
           phase, waypoint, activity, skill, percentage,
