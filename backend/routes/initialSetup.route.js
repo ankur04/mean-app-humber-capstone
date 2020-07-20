@@ -42,9 +42,13 @@ module.exports = (app) => {
 
 const startJourney = async (initialSetup) => {
   const template = await Template.findOne({ sector: initialSetup.sector });
-  const { phaseId, waypointId, activityId, skillId } = getFirstJouneyData(
-    template
-  );
+  const {
+    phaseId,
+    waypointId,
+    activityId,
+    skillId,
+    exercise,
+  } = getFirstJouneyData(template);
   const journey = new Journey({
     journeyId: initialSetup._id,
     sector: initialSetup.sector,
@@ -52,6 +56,7 @@ const startJourney = async (initialSetup) => {
     waypointId,
     activityId,
     skillId,
+    exercise,
   });
   journey.save();
 };
@@ -61,10 +66,17 @@ const getFirstJouneyData = (template) => {
   const waypoint1 = phase1.waypoints[0];
   const activity1 = waypoint1.activities[0];
   const skill1 = activity1.skills[0];
+  const exercise1 = skill1.exercises_data.exercises[0];
   return {
     phaseId: phase1.id,
     waypointId: waypoint1.id,
     activityId: activity1.id,
     skillId: skill1.id,
+    exercise: {
+      id: exercise1.id,
+      document: { show: false, download: false },
+      canvas: { show: false, download: false },
+      video: false,
+    },
   };
 };
