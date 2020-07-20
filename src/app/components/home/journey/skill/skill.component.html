@@ -20,11 +20,11 @@
       <div class="card skill-name">{{this.skillName}}</div>
     </div>
   </div>
-  <div class="row card skill-desc">{{this.skillDesc}} <a routerLink="/home/exercise"
-      [state]="{skillData:{skill:this.skill, phaseno:phaseno, phasename:phasename}}">more</a></div>
+  <div class="row card skill-desc">{{this.skillDesc}}
+  </div>
   <div class="row" *ngFor="let exercise of this.exercises; let i = index">
     <h5 class="col-5 col-sm-5 title">EXERCISE {{i+1}}</h5>
-    <div class="col-7 col-sm-7 align-skill-middle">
+    <div class="col-7 col-sm-7 align-skill-middle" (click)="visitExercise(exercise)">
       <div class="card skill-name">{{exercise}}</div>
     </div>
   </div>

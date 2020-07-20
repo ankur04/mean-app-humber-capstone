@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { sessionSetItem, sessionGetItem } from 'src/app/helpers/storage.helper';
+import { Router } from '@angular/router';
+import { sessionGetItem, sessionSetItem } from 'src/app/helpers/storage.helper';
 
 @Component({
   selector: 'app-skill',
@@ -20,7 +21,7 @@ export class SkillComponent implements OnInit {
 
   skillData = { skill: { skill_desc: ":", exercises_data: { exercises: [] } }, phaseno: "", phasename: "" };
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     if (history.state.skillData) {
@@ -37,6 +38,19 @@ export class SkillComponent implements OnInit {
 
   setSkill(skill_desc) {
     [this.skillName, this.skillDesc] = skill_desc.split(":");
+  }
+
+  visitExercise(exercise) {
+    this.router.navigate(["/home/exercise"], {
+      state: {
+        "exerciseData": {
+          "phaseno": this.phaseno,
+          "phasename": this.phasename,
+          "skillName": this.skillName,
+          "exerciseName": exercise
+        }
+      }
+    });
   }
 
 }
