@@ -41,7 +41,6 @@ export class SkillComponent implements OnInit {
   }
 
   visitExercise(exercise) {
-    console.log(exercise)
     this.router.navigate(["/home/exercise"], {
       state: {
         "exerciseData": {

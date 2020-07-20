@@ -25,7 +25,6 @@ export class ExerciseComponent implements OnInit {
     } else {
       this.exerciseData = sessionGetItem("exerciseData");
     }
-    console.log(this.exerciseData)
     this.phaseno = this.exerciseData.phaseno;
     this.phasename = this.exerciseData.phasename;
     this.skillName = this.exerciseData.skillName;
