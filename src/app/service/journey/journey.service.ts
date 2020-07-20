@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { sessionSetItem } from 'src/app/helpers/storage.helper';
 import { AppService } from '../app.service';
 
 @Injectable({
@@ -8,34 +9,41 @@ import { AppService } from '../app.service';
 })
 export class JourneyService {
 
+  journey;
+
   constructor(private http: HttpClient, private appService: AppService) { }
 
   getProgress(journeyId) {
     return this.http.post(this.appService.baseUri + "/journey", { journeyId })
-      .pipe(map(data => {
+      .pipe(map(this.fetchProgressSuccess));
+  }
 
-        const template = this.getTemplate(data, this.appService.templates);
-        const phase = this.getPhase(data, template.phases);
-        const waypoint = this.getWaypoint(data, phase.waypoints);
-        const activity = this.getActivity(data, waypoint.activities);
-        const skill = this.getSkill(data, activity.skills);
-        const percentage = this.getPercentage();
+  fetchProgressSuccess = (data: any) => {
+    console.log(data)
+    this.journey = data;
+    sessionSetItem("journey", data);
 
-        const next = this.getNext(data);
-        const nextPhase = this.getPhase(next, template.phases);
-        const nextWaypoint = this.getWaypoint(next, nextPhase.waypoints);
-        const nextActivity = this.getActivity(next, nextWaypoint.activities);
-        const nextSkill = this.getSkill(next, nextActivity.skills);
+    const template = this.getTemplate(data, this.appService.templates);
+    const phase = this.getPhase(data, template.phases);
+    const waypoint = this.getWaypoint(data, phase.waypoints);
+    const activity = this.getActivity(data, waypoint.activities);
+    const skill = this.getSkill(data, activity.skills);
+    const percentage = this.getPercentage();
 
-        return {
-          phase, waypoint, activity, skill, percentage,
-          nextPhase,
-          nextWaypoint,
-          nextActivity,
-          nextSkill,
-          nextPercentage: next.percentage
-        };
-      }));
+    const next = this.getNext(data);
+    const nextPhase = this.getPhase(next, template.phases);
+    const nextWaypoint = this.getWaypoint(next, nextPhase.waypoints);
+    const nextActivity = this.getActivity(next, nextWaypoint.activities);
+    const nextSkill = this.getSkill(next, nextActivity.skills);
+
+    return {
+      phase, waypoint, activity, skill, percentage,
+      nextPhase,
+      nextWaypoint,
+      nextActivity,
+      nextSkill,
+      nextPercentage: next.percentage
+    };
   }
 
   getTemplate = (data, templates) =>
@@ -86,6 +94,11 @@ export class JourneyService {
     nextData.percentage = "0%"
 
     return nextData;
+  }
+
+  updateJourney() {
+    this.http.put(this.appService.baseUri + "/journey", this.journey)
+      .subscribe(this.fetchProgressSuccess);
   }
 
 }

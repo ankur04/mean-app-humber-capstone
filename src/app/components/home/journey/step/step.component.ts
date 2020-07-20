@@ -27,5 +27,5 @@ export class StepComponent {
 
   @Input()
   phasename;
-
+  
 }

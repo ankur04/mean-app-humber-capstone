@@ -18,22 +18,22 @@ let journeySchema = new Schema(
     },
     phaseId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: Phase,
       required: true,
     },
     waypointId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: WayPoint,
       required: true,
     },
     activityId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: Activity,
       required: true,
     },
     skillId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: Skill,
+      required: true,
+    },
+    exercise: {
+      type: mongoose.Schema.Types.Mixed,
       required: true,
     },
   },

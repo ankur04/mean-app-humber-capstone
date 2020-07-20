@@ -23,6 +23,7 @@ export class JourneyComponent implements OnInit {
 
   stepData = "This step focuses on prototyping your first product. It has one key skill, and two canvasses."
   nextData = "This step focuses on designing the product to meet the key needs of your users. It has one key skill, and two canvasses."
+  exercise: any;
 
   constructor(private journeyService: JourneyService) { }
 
@@ -31,6 +32,7 @@ export class JourneyComponent implements OnInit {
     if (!journeyId) {
       journeyId = sessionGetItem("journeyId");
     }
+    console.log("DON'T REMOVE\nJourney ID : " + journeyId)
     this.journeyService.getProgress(journeyId)
       .subscribe((data) => {
         this.phase = data.phase;
