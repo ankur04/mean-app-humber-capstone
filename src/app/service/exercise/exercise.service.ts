@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { JourneyService } from '../journey/journey.service';
 import { AppService } from '../app.service';
 import { Router } from '@angular/router';
+import { sessionSetItem } from 'src/app/helpers/storage.helper';
 
 @Injectable({
   providedIn: 'root'
@@ -19,10 +20,7 @@ export class ExerciseService {
     let skill = this.journeyService.getSkill(this.journeyService.journey, activity.skills);
     const exerciseIndex = skill.exercises_data.exercises.findIndex(exercise => exercise.id == this.journeyService.journey.exercise.id);
     if (skill.exercises_data.exercises.length - 1 == exerciseIndex) {
-      console.log("this is last")
-      console.log(this.journeyService.journey)
       const nextStep = this.journeyService.getNextStep(this.journeyService.journey);
-      console.log(nextStep)
       this.journeyService.updateJourney(nextStep);
       this.router.navigate(["/home/journey"], {
         state: {
@@ -37,6 +35,7 @@ export class ExerciseService {
         canvas: { show: false, download: false },
         video: false,
       }
+      sessionSetItem("exerciseData", this.journeyService.journey.exercise);
       this.journeyService.updateJourneyExercise(this.journeyService.journey.exercise);
       this.router.navigate(["/home/skill"], {
         state: {

@@ -4,9 +4,7 @@ import { map } from 'rxjs/operators';
 import { sessionSetItem } from 'src/app/helpers/storage.helper';
 import { AppService } from '../app.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class JourneyService {
 
   journey;
@@ -114,12 +112,12 @@ export class JourneyService {
 
   updateJourneyExercise(exercise) {
     this.journey.exercise = exercise;
-    this.http.put(this.appService.baseUri + "/journey", this.journey)
+    this.http.put(this.appService.baseUri + "/update-journey", this.journey)
       .subscribe(this.fetchProgressSuccess);
   }
 
   updateJourney(journey) {
-    this.http.put(this.appService.baseUri + "/journey", journey)
+    this.http.put(this.appService.baseUri + "/update-journey", journey)
       .subscribe(this.fetchProgressSuccess);
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { sessionGetItem, sessionSetItem } from 'src/app/helpers/storage.helper';
 import { ExerciseService } from 'src/app/service/exercise/exercise.service';
 import { JourneyService } from 'src/app/service/journey/journey.service';

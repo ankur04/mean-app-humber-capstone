@@ -1,11 +1,7 @@
 <div class="container card journey-card">
   <div class="row">
     <div class="col-xs-6">
-      <img
-        class="journey-page-logo"
-        src="/assets/images/user-logo.PNG"
-        alt="Avatar"
-      />
+      <img class="journey-page-logo" src="/assets/images/user-logo.PNG" alt="Avatar" />
     </div>
     <div class="col-xs-6 user-head">
       <h2 class="header">Pilot Project</h2>
@@ -14,24 +10,14 @@
       </h4>
     </div>
   </div>
-  <app-step
-    [title]="'Step'"
-    [stepNumber]="this.waypoint?.step_no"
-    [percentage]="this.percentage"
-    [data]="this.activity?.activity_desc"
-    [skill]="this.skill"
-    [phaseno]="this.phase?.no"
-    [phasename]="this.phase?.name"
-  >
+  <app-step [title]="'Step'" [stepNumber]="this.waypoint?.step_no" [percentage]="this.percentage"
+    [data]="this.activity?.activity_desc" [skill]="this.skill" [phaseno]="this.phase?.no"
+    [phasename]="this.phase?.name">
   </app-step>
 
   <div class="container">
     <div class="row">
-      <button
-        type="button"
-        class="btn btn-light col-lg-6"
-        (click)="oldPhase(this.phase?.id)"
-      >
+      <button type="button" class="btn btn-light col-lg-6" (click)="oldPhase(this.phase?.id)">
         Back
       </button>
       <button type="button" class="btn btn-light col-lg-6">

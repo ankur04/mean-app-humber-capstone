@@ -13,8 +13,7 @@ import { JourneyService } from "src/app/service/journey/journey.service";
   ],
 })
 export class SkillComponent implements OnInit {
-  @Input()
-  stepNumber = 1;
+  stepNumber;
 
   skillIndex = 0;
 
@@ -29,9 +28,10 @@ export class SkillComponent implements OnInit {
     skill: { skill_desc: ":", exercises_data: { exercises: [] } },
     phaseno: "",
     phasename: "",
+    stepNumber: 1
   };
 
-  constructor(private router: Router, private journeyService: JourneyService) {}
+  constructor(private router: Router, private journeyService: JourneyService) { }
 
   ngOnInit() {
     if (history.state.skillData) {
@@ -40,6 +40,7 @@ export class SkillComponent implements OnInit {
     } else {
       this.skillData = sessionGetItem("skillData");
     }
+    this.stepNumber = this.skillData.stepNumber;
     this.exercises = this.skillData.skill.exercises_data.exercises;
     this.phaseno = this.skillData.phaseno;
     this.phasename = this.skillData.phasename;
