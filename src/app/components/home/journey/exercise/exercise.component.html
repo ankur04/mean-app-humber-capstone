@@ -5,41 +5,44 @@
     </div>
     <div class="col-xs-6 user-head">
       <h2 class="header">Pilot Project</h2>
-      <h4 class="subheader">Phase {{this.phase?.no}} - {{this.phase?.name}}</h4>
+      <h4 class="subheader">Phase {{this.phaseno}} - {{this.phasename}}</h4>
     </div>
   </div>
   <div class="row grid-exercise">
     <h5 class="col-5">Skill</h5>
-    <div class="card col-7">{{this.skill}}</div>
+    <div class="card col-7">{{this.skillName}}</div>
 
     <div class="gap"></div>
 
     <h5 class="col-5">Exercise</h5>
-    <div class="card col-7">{{this.exercise}}</div>
+    <div class="card col-7">{{this.exerciseName}}</div>
 
     <div class="gap"></div>
 
     <h5 class="col-5">Document</h5>
-    <button class="card col-7">Show</button>
+    <button class="card col-7" (click)="show('document')"
+      [ngClass]="{'clicked': this.exercise.document.show}">Show</button>
     <h5 class="col-5"></h5>
-    <button class="card col-7">Download</button>
+    <button class="card col-7" (click)="download('document')"
+      [ngClass]="{'clicked': this.exercise.document.download}">Download</button>
 
     <div class="gap"></div>
 
     <h5 class="col-5">Canvas</h5>
-    <button class="card col-7">Show</button>
+    <button class="card col-7" (click)="show('canvas')" [ngClass]="{'clicked': this.exercise.canvas.show}">Show</button>
     <h5 class="col-5"></h5>
-    <button class="card col-7">Download</button>
+    <button class="card col-7" (click)="download('canvas')"
+      [ngClass]="{'clicked': this.exercise.canvas.download}">Download</button>
 
     <div class="gap"></div>
 
     <h5 class="col-5">Video</h5>
-    <button class="card col-7">Show</button>
+    <button class="card col-7" (click)="showVideo()" [ngClass]="{'clicked': this.exercise.video}">Show</button>
     <div class="gap"></div>
 
     <!-- <button class="card col-3">Back</button> -->
     <div class="col-3"></div>
     <div class="col-2"></div>
-    <button class="card col-7">Continue</button>
+    <button class="card col-7" (click)="continue()" [disabled]="this.isContinueDisabled">Continue</button>
   </div>
 </div>

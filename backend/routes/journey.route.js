@@ -8,4 +8,13 @@ module.exports = (app) => {
 
     res.send(journey);
   });
+
+  app.put("/api/journey", async (req, res) => {
+    const updatedJourney = await Journey.findByIdAndUpdate(
+      req.body._id,
+      req.body
+    );
+
+    res.send(updatedJourney);
+  });
 };
