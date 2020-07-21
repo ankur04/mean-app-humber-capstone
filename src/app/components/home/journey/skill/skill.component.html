@@ -24,8 +24,9 @@
   </div>
   <div class="row" *ngFor="let exercise of this.exercises; let i = index">
     <h5 class="col-5 col-sm-5 title">EXERCISE {{i+1}}</h5>
-    <div class="col-7 col-sm-7 align-skill-middle" (click)="visitExercise(exercise)">
-      <button class="card skill-name" [disabled]="i>this.skillIndex">{{exercise.name}}</button>
+    <div class="col-7 col-sm-7 align-skill-middle" (click)="visitExercise(exercise,i)">
+      <button class="card skill-name" [ngClass]="{'completed-background':i<this.skillIndex}"
+        [disabled]="i>this.skillIndex">{{exercise.name}}</button>
     </div>
   </div>
 </div>

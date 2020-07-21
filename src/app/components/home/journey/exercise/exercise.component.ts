@@ -21,8 +21,9 @@ export class ExerciseComponent implements OnInit {
   isContinueDisabled = true;
 
   exercise;
+  completed: boolean;
 
-  constructor(private journeyService: JourneyService) { }
+  constructor(private journeyService: JourneyService, private exerciseService: ExerciseService) { }
 
   ngOnInit() {
     if (history.state.exerciseData) {
@@ -34,6 +35,7 @@ export class ExerciseComponent implements OnInit {
     this.phaseno = this.exerciseData.phaseno;
     this.phasename = this.exerciseData.phasename;
     this.skillName = this.exerciseData.skillName;
+    this.completed = this.exerciseData.completed;
     this.exerciseName = this.exerciseData.exercise.name;
     this.exercise = this.journeyService.journey.exercise
     this.updateContinue();
@@ -41,17 +43,21 @@ export class ExerciseComponent implements OnInit {
 
   show(type) {
     window.open("/assets/" + type + "/" + this.exerciseData.exercise.document, '_blank');
-    this.exercise[type].show = true;
-    this.updateContinue();
-    this.journeyService.updateJourney();
-    sessionSetItem("exerciseData", this.exerciseData);
+    if (!this.completed) {
+      this.exercise[type].show = true;
+      this.updateContinue();
+      this.journeyService.updateJourneyExercise(this.exercise);
+      sessionSetItem("exerciseData", this.exerciseData);
+    }
   }
 
   showVideo() {
-    this.exercise.video = true;
-    this.updateContinue();
-    this.journeyService.updateJourney();
-    sessionSetItem("exerciseData", this.exerciseData);
+    if (!this.completed) {
+      this.exercise.video = true;
+      this.updateContinue();
+      this.journeyService.updateJourneyExercise(this.exercise);
+      sessionSetItem("exerciseData", this.exerciseData);
+    }
   }
 
   download(type) {
@@ -60,10 +66,12 @@ export class ExerciseComponent implements OnInit {
     link.href = "assets/" + type + "/" + this.exerciseData.exercise.document;
     link.click();
     link.remove();
-    this.exercise[type].download = true;
-    this.updateContinue();
-    this.journeyService.updateJourney();
-    sessionSetItem("exerciseData", this.exerciseData);
+    if (!this.completed) {
+      this.exercise[type].download = true;
+      this.updateContinue();
+      this.journeyService.updateJourneyExercise(this.exercise);
+      sessionSetItem("exerciseData", this.exerciseData);
+    }
   }
 
   updateContinue() {
@@ -73,7 +81,7 @@ export class ExerciseComponent implements OnInit {
   }
 
   continue() {
-    console.log("continue")
+    this.exerciseService.continue();
   }
 
 }
