@@ -9,12 +9,14 @@ module.exports = (app) => {
     res.send(journey);
   });
 
-  app.put("/api/journey", async (req, res) => {
+  app.put("/api/update-journey", async (req, res) => {
     const updatedJourney = await Journey.findByIdAndUpdate(
       req.body._id,
-      req.body
+      req.body,
+      { new: true }
     );
 
+    console.log(updatedJourney);
     res.send(updatedJourney);
   });
 };

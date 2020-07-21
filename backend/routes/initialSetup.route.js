@@ -33,6 +33,10 @@ module.exports = (app) => {
       } else {
         res.status(404).send();
       }
+
+      const journey = await Journey.findOne({ journeyId: setupId });
+      if (journey) await journey.delete({ journeyId: setupId });
+
       res.status(200).send({ setup });
     } catch (e) {
       res.status(500).send(e);

@@ -22,13 +22,11 @@ export class JourneyComponent implements OnInit {
   nextSkill;
   nextPercentage;
 
-  stepData =
-    "This step focuses on prototyping your first product. It has one key skill, and two canvasses.";
-  nextData =
-    "This step focuses on designing the product to meet the key needs of your users. It has one key skill, and two canvasses.";
+  stepData;
+  nextData;
   exercise: any;
 
-  constructor(private journeyService: JourneyService, public router: Router) {}
+  constructor(private journeyService: JourneyService, public router: Router) { }
 
   ngOnInit() {
     let journeyId = history.state.journeyId;
