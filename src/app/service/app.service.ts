@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "../../environments/environment";
-import { User } from '../model/User';
+import { User } from "../model/User";
 
 @Injectable({ providedIn: "root" })
 export class AppService {
@@ -12,12 +12,13 @@ export class AppService {
 
   templates;
 
-  constructor(private http: HttpClient) { }
+  currentTemplates;
+
+  constructor(private http: HttpClient) {}
 
   getTemplate() {
-    this.http.get(this.baseUri + "/template").subscribe(data => {
+    this.http.get(this.baseUri + "/template").subscribe((data) => {
       this.templates = data;
     });
   }
-
 }

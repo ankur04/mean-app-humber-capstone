@@ -27,17 +27,34 @@
 
   <div class="container">
     <div class="row">
+      <div *ngIf="disabled == 1; then showButtonBlock; else elseBlock"></div>
+      <ng-template #showButtonBlock>
+        <button
+          type="button"
+          class="btn btn-light col-lg-6"
+          (click)="oldPhase(this.phase?.id)"
+        >
+          Back
+        </button>
+      </ng-template>
+      <ng-template #elseBlock>
+        <button
+          disabled
+          type="button"
+          class="btn btn-light col-lg-6"
+          (click)="oldPhase(this.phase?.id)"
+        >
+          Back
+        </button>
+      </ng-template>
       <button
         type="button"
         class="btn btn-light col-lg-6"
-        (click)="oldPhase(this.phase?.id)"
+        (click)="nextPhase(this.phase?.id)"
       >
-        Back
-      </button>
-      <button type="button" class="btn btn-light col-lg-6">
         Next Step
       </button>
     </div>
+    <br />
   </div>
-  <br />
 </div>
