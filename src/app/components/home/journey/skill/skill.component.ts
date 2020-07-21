@@ -48,23 +48,22 @@ export class SkillComponent implements OnInit {
 
   setSkill(skill_desc) {
     [this.skillName, this.skillDesc] = skill_desc.split(":");
-    console.log("inside journeeeeeeeeeeeeeeee");
-    console.log(this.journeyService.journey);
     this.skillIndex = this.exercises.findIndex(
       (exercise) => exercise.id == this.journeyService.journey.exercise.id
     );
   }
 
-  visitExercise(exercise) {
+  visitExercise(exercise, i) {
     this.router.navigate(["/home/exercise"], {
       state: {
-        exerciseData: {
-          phaseno: this.phaseno,
-          phasename: this.phasename,
-          skillName: this.skillName,
-          exercise: exercise,
-        },
-      },
+        "exerciseData": {
+          "phaseno": this.phaseno,
+          "phasename": this.phasename,
+          "skillName": this.skillName,
+          "exercise": exercise,
+          "completed": i < this.skillIndex
+        }
+      }
     });
   }
 }
