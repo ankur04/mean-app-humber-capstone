@@ -14,6 +14,9 @@ import { StartJourneyComponent } from "./components/home/start-journey/start-jou
 import { SkillComponent } from './components/home/journey/skill/skill.component';
 import { ExerciseComponent } from './components/home/journey/exercise/exercise.component';
 import { PreviousPhaseComponent } from './components/home/previous-phase/previous-phase.component';
+import { PreviousSkillComponent } from './components/home/journey/previous-skill/previous-skill.component';
+import { PreviousExerciseComponent } from './components/home/journey/previous-exercise/previous-exercise.component';
+import { PreviousStepComponent } from './components/home/journey/previous-step/previous-step.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { PreviousPhaseComponent } from './components/home/previous-phase/previou
     SkillComponent,
     ExerciseComponent,
     PreviousPhaseComponent,
+    PreviousSkillComponent,
+    PreviousExerciseComponent,
+    PreviousStepComponent,
   ],
   imports: [
     BrowserModule,

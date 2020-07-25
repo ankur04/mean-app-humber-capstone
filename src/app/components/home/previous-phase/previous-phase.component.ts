@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { AppService } from "src/app/service/app.service";
 import { template } from "@angular/core/src/render3";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-previous-phase",
@@ -17,24 +18,32 @@ export class PreviousPhaseComponent implements OnInit {
   templates;
   oldPhaseId;
   oldWayPointId;
+  currentCompletedPhase;
+  currentCompletedWaypoint;
   disabled;
+  disableNextButton;
 
-  constructor(private appService: AppService) {
+  constructor(private appService: AppService, public router: Router) {
     this.templates = appService.templates as any[];
   }
 
   ngOnInit() {
     this.oldPhaseId = history.state.oldPhaseId;
+    this.currentCompletedPhase = history.state.oldPhaseId;
     this.disabled = "1";
     this.oldWayPointId = history.state.oldWayPointId;
+    this.currentCompletedWaypoint = history.state.oldWayPointId;
+    this.disableNextButton = false;
     this.getPhase();
   }
 
   oldPhase() {
+    this.disableNextButton = false;
     this.getPhase();
   }
 
   getPhase() {
+    console.log("inside get phase template");
     for (const template of this.templates) {
       let index = 0;
       for (let i = 0; i < template.phases.length; i++) {
@@ -44,20 +53,30 @@ export class PreviousPhaseComponent implements OnInit {
           if (currWaypoint.id == this.oldWayPointId) {
             this.waypoint = currPhase.waypoints[j - 1];
             if (this.waypoint === undefined) {
+              console.log("inside way point undefied");
+              console.log(this.phase);
+
               this.phase = template.phases[i - 1];
               this.waypoint = this.phase.waypoints[
                 this.phase.waypoints.length - 1
               ];
               if (this.phase === undefined) {
+                console.log("inside phase undefined");
                 this.phase = template.phases[0];
               }
             } else {
             }
+            this.phase = template.phases[i];
             this.oldWayPointId = this.waypoint.id;
             this.activity = this.waypoint.activities[0];
             this.skill = this.activity.skills[0];
             this.percentage = "100%";
-            if (this.phase.no === "I" && this.waypoint.step_no === "1") {
+            if (
+              this.phase &&
+              this.phase.no === "I" &&
+              this.waypoint &&
+              this.waypoint.step_no === "1"
+            ) {
               this.disabled = "0";
             }
           }
@@ -97,10 +116,28 @@ export class PreviousPhaseComponent implements OnInit {
             break;
           }
         }
+        // console.log("values of variables");
+        // console.log("old phase id : " + this.oldPhaseId);
+        // console.log("current phase id : " + this.currentCompletedPhase);
+        // console.log("old way point id : " + this.oldWayPointId);
+        // console.log("current way point id: " + this.currentCompletedWaypoint);
+        if (
+          this.oldPhaseId === this.currentCompletedPhase &&
+          this.oldWayPointId === this.currentCompletedWaypoint
+        ) {
+          console.log("true");
+          this.disableNextButton = true;
+        }
         if (front) {
           break;
         }
       }
+    }
+
+    if (this.disableNextButton) {
+      this.router.navigate(["/home/journey"], {
+        state: { journeyId: history.state.journeyId },
+      });
     }
   }
 }

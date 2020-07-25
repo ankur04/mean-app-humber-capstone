@@ -1,0 +1,28 @@
+<div class="step">
+  <div class="container overview">
+    <div class="row">
+      <h5 class="title">{{ this.title }}</h5>
+      <div class="numberCircle step-number">
+        <b>{{ this.stepNumber }}</b>
+      </div>
+      <div class="numberCircle">{{ this.percentage }}</div>
+    </div>
+  </div>
+  <div class="card">
+    <p class="data">
+      {{ this.data }}
+      <a
+        routerLink="/home/previousSkill"
+        [state]="{
+          skillData: {
+            stepNumber: this.stepNumber,
+            skill: this.skill,
+            phaseno: phaseno,
+            phasename: phasename
+          }
+        }"
+        >more</a
+      >
+    </p>
+  </div>
+</div>

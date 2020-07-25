@@ -14,7 +14,7 @@
       </h4>
     </div>
   </div>
-  <app-step
+  <app-previous-step
     [title]="'Step'"
     [stepNumber]="this.waypoint?.step_no"
     [percentage]="this.percentage"
@@ -23,7 +23,7 @@
     [phaseno]="this.phase?.no"
     [phasename]="this.phase?.name"
   >
-  </app-step>
+  </app-previous-step>
 
   <div class="container">
     <div class="row">
@@ -47,13 +47,31 @@
           Back
         </button>
       </ng-template>
-      <button
+      <div
+        *ngIf="
+          disableNextButton == false;
+          then showNextButton;
+          else elseNextButton
+        "
+      ></div>
+      <ng-template #showNextButton>
+        <button
+          type="button"
+          class="btn btn-light col-lg-6"
+          (click)="nextPhase()"
+        >
+          Next Step
+        </button>
+      </ng-template>
+
+      <ng-template #elseNextButton> </ng-template>
+      <!-- <button
         type="button"
         class="btn btn-light col-lg-6"
         (click)="nextPhase()"
       >
         Next Step
-      </button>
+      </button> -->
     </div>
     <br />
   </div>

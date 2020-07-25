@@ -10,6 +10,8 @@ import { LoginComponent } from "./components/login/login.component";
 import { RegisterComponent } from "./components/register/register.component";
 import { AuthGuard } from "./service/authentication/auth-guard.service";
 import { PreviousPhaseComponent } from "./components/home/previous-phase/previous-phase.component";
+import { PreviousSkillComponent } from "./components/home/journey/previous-skill/previous-skill.component";
+import { PreviousExerciseComponent } from "./components/home/journey/previous-exercise/previous-exercise.component";
 
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "login" },
@@ -25,6 +27,8 @@ const routes: Routes = [
       { path: "skill", component: SkillComponent },
       { path: "exercise", component: ExerciseComponent },
       { path: "previousPhase", component: PreviousPhaseComponent },
+      { path: "previousSkill", component: PreviousSkillComponent },
+      { path: "previousExercise", component: PreviousExerciseComponent },
     ],
     canActivateChild: [AuthGuard],
     canActivate: [AuthGuard],
