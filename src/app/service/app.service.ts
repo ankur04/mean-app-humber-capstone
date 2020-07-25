@@ -14,10 +14,11 @@ export class AppService {
 
   currentTemplates;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getTemplate() {
     this.http.get(this.baseUri + "/template").subscribe((data) => {
+      console.log("templates", data)
       this.templates = data;
     });
   }

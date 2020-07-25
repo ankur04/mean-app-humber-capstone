@@ -12,7 +12,7 @@ export class ExerciseService {
     private journeyService: JourneyService,
     private appService: AppService,
     private router: Router
-  ) {}
+  ) { }
 
   continue() {
     const template = this.journeyService.getTemplate(
@@ -42,12 +42,20 @@ export class ExerciseService {
       const nextStep = this.journeyService.getNextStep(
         this.journeyService.journey
       );
-      this.journeyService.updateJourney(nextStep);
-      this.router.navigate(["/home/journey"], {
-        state: {
-          journeyId: nextStep.journeyId,
-        },
-      });
+      if (nextStep) {
+        this.journeyService.updateJourney(nextStep);
+        this.router.navigate(["/home/journey"], {
+          state: {
+            journeyId: nextStep.journeyId,
+          },
+        });
+      } else {
+        this.router.navigate(["/home/journey"], {
+          state: {
+            journeyId: this.journeyService.journey.journeyId,
+          },
+        });
+      }
     } else {
       const nextExerciseId =
         skill.exercises_data.exercises[exerciseIndex + 1].id;

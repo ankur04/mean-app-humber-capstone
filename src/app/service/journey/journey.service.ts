@@ -17,8 +17,7 @@ export class JourneyService {
   }
 
   fetchProgressSuccess = (data: any) => {
-    console.log("progress")
-    console.log(data)
+    console.log("progress", data)
     this.journey = data;
     sessionSetItem("journey", data);
 
@@ -30,10 +29,10 @@ export class JourneyService {
     const percentage = this.getPercentage();
 
     const next = this.getNextStep(data);
-    const nextPhase = this.getPhase(next, template.phases);
-    const nextWaypoint = this.getWaypoint(next, nextPhase.waypoints);
-    const nextActivity = this.getActivity(next, nextWaypoint.activities);
-    const nextSkill = this.getSkill(next, nextActivity.skills);
+    const nextPhase = next ? this.getPhase(next, template.phases) : null;
+    const nextWaypoint = next ? this.getWaypoint(next, nextPhase.waypoints) : null;
+    const nextActivity = next ? this.getActivity(next, nextWaypoint.activities) : null;
+    const nextSkill = next ? this.getSkill(next, nextActivity.skills) : null;
 
     return {
       phase, waypoint, activity, skill, percentage,
@@ -41,7 +40,7 @@ export class JourneyService {
       nextWaypoint,
       nextActivity,
       nextSkill,
-      nextPercentage: next.percentage
+      nextPercentage: next ? next.percentage : null
     };
   }
 
