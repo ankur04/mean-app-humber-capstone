@@ -18,7 +18,6 @@ export class AppService {
 
   getTemplate() {
     this.http.get(this.baseUri + "/template").subscribe((data) => {
-      console.log("templates", data)
       this.templates = data;
     });
   }

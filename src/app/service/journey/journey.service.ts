@@ -26,7 +26,7 @@ export class JourneyService {
     const waypoint = this.getWaypoint(data, phase.waypoints);
     const activity = this.getActivity(data, waypoint.activities);
     const skill = this.getSkill(data, activity.skills);
-    const percentage = this.getPercentage();
+    const percentage = this.getPercentage(data, skill.exercises_data.exercises);
 
     const next = this.getNextStep(data);
     const nextPhase = next ? this.getPhase(next, template.phases) : null;
@@ -59,11 +59,17 @@ export class JourneyService {
   getSkill = (data, skills) =>
     skills.find(skill => skill.id == data.skillId);
 
-  getExercise = (data, exercises) =>
-    exercises.find(exercise => exercise.id == data.exercise.id);
+  getExerciseIndex = (data, exercises) =>
+    exercises.findIndex(exercise => exercise.id == data.exercise.id);
 
-  getPercentage = () => {
-    return "50%";
+  getPercentage = (data, exercises) => {
+    let index = this.getExerciseIndex(data, exercises);
+    if (data.exercise.video
+      && (data.exercise.canvas.show || data.exercise.canvas.download)
+      && (data.exercise.document.show || data.exercise.document.download)) {
+      index++;
+    }
+    return Math.round(index / exercises.length * 100) + "%";
   }
 
   getNextStep(data) {
