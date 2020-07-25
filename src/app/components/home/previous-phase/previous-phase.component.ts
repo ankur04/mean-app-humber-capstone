@@ -43,7 +43,6 @@ export class PreviousPhaseComponent implements OnInit {
   }
 
   getPhase() {
-    console.log("inside get phase template");
     for (const template of this.templates) {
       let index = 0;
       for (let i = 0; i < template.phases.length; i++) {
@@ -53,15 +52,12 @@ export class PreviousPhaseComponent implements OnInit {
           if (currWaypoint.id == this.oldWayPointId) {
             this.waypoint = currPhase.waypoints[j - 1];
             if (this.waypoint === undefined) {
-              console.log("inside way point undefied");
-              console.log(this.phase);
 
               this.phase = template.phases[i - 1];
               this.waypoint = this.phase.waypoints[
                 this.phase.waypoints.length - 1
               ];
               if (this.phase === undefined) {
-                console.log("inside phase undefined");
                 this.phase = template.phases[0];
               }
             } else {
@@ -95,14 +91,10 @@ export class PreviousPhaseComponent implements OnInit {
         for (let j = 0; j < currPhase.waypoints.length; j++) {
           let currWaypoint = currPhase.waypoints[j];
           if (currWaypoint.id == this.oldWayPointId) {
-            console.log("old match found : ");
             let way = currPhase.waypoints[j + 1];
-            console.log(way);
             if (way === undefined) {
               this.phase = template.phases[i + 1];
-              console.log("inside undefined");
               front = true;
-              console.log(this.phase);
               this.waypoint = this.phase.waypoints[0];
               this.activity = this.waypoint.activities[0];
               this.skill = this.activity.skills[0];
@@ -116,16 +108,10 @@ export class PreviousPhaseComponent implements OnInit {
             break;
           }
         }
-        // console.log("values of variables");
-        // console.log("old phase id : " + this.oldPhaseId);
-        // console.log("current phase id : " + this.currentCompletedPhase);
-        // console.log("old way point id : " + this.oldWayPointId);
-        // console.log("current way point id: " + this.currentCompletedWaypoint);
         if (
           this.oldPhaseId === this.currentCompletedPhase &&
           this.oldWayPointId === this.currentCompletedWaypoint
         ) {
-          console.log("true");
           this.disableNextButton = true;
         }
         if (front) {

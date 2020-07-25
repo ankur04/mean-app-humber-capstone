@@ -15,8 +15,6 @@ module.exports = (app) => {
       req.body,
       { new: true }
     );
-
-    console.log(updatedJourney);
     res.send(updatedJourney);
   });
 };
