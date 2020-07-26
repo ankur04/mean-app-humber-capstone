@@ -16,6 +16,18 @@
     <br />
     <div>
       <div class="input-box form-group form-inline row">
+        <label for="orgName" class="col">Org Name : </label>
+        <input
+          type="text"
+          class="form-control col"
+          id="organizationName"
+          [(ngModel)]="initialSetup.organizationName"
+          name="organizationName"
+          required="required"
+        />
+      </div>
+
+      <div class="input-box form-group form-inline row">
         <label for="orgSize" class="col">Org Size : </label>
         <select
           class="form-control col"

@@ -1,4 +1,5 @@
 export class Setup {
+  organizationName: string;
   organization: string;
   environment: string;
   role: string;
