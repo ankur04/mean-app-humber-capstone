@@ -4,6 +4,9 @@ const Schema = mongoose.Schema;
 // Define collection and schema
 let initialSetupSchema = new Schema(
   {
+    organizationName: {
+      type: String,
+    },
     organization: {
       type: String,
     },
