@@ -12,13 +12,17 @@ import { InitialSetupService } from "src/app/service/initialSetup/InitialSetup.s
 export class StartJourneyComponent implements OnInit {
   public initialSetup: Setup = new Setup();
   public initialSetupList: Setup[];
+  user;
+
+  journeyPercentage;
 
   constructor(
     public router: Router,
-    public initialSetupService: InitialSetupService
+    public initialSetupService: InitialSetupService,
   ) { }
 
   ngOnInit() {
+    this.user = getUser();
     this.loadData();
   }
 

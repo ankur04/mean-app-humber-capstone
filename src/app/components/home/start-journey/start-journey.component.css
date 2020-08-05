@@ -247,3 +247,9 @@
 .delete-button {
   margin-top: 10px;
 }
+
+.org-name {
+  font-weight: bold;
+  font-size: 14px !important;
+  color: #003c7b !important;
+}
