@@ -17,6 +17,7 @@ import { PreviousPhaseComponent } from './components/home/previous-phase/previou
 import { PreviousSkillComponent } from './components/home/journey/previous-skill/previous-skill.component';
 import { PreviousExerciseComponent } from './components/home/journey/previous-exercise/previous-exercise.component';
 import { PreviousStepComponent } from './components/home/journey/previous-step/previous-step.component';
+import { JourneyPercentageComponent } from './components/home/start-journey/journey-percentage/journey-percentage.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { PreviousStepComponent } from './components/home/journey/previous-step/p
     PreviousSkillComponent,
     PreviousExerciseComponent,
     PreviousStepComponent,
+    JourneyPercentageComponent,
   ],
   imports: [
     BrowserModule,

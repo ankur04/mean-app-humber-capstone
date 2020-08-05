@@ -126,4 +126,9 @@ export class JourneyService {
       .subscribe(this.fetchProgressSuccess);
   }
 
+
+  getJourneyPercentage(journeyId) {
+    return this.http.post(this.appService.baseUri + "/journey-percentage", { journeyId });
+  }
+
 }
