@@ -28,8 +28,6 @@ module.exports = (app) => {
     const phase = getPhase(journey, template.phases);
     const waypointIndex = getWaypointIndex(journey, template.phases);
     const totalWaypoints = getTotalWaypoints(template);
-    console.log(waypointIndex);
-    console.log(totalWaypoints);
     let journeyPercentage = 0;
     if (waypointIndex + 1 == totalWaypoints) {
       const waypoint = getWaypoint(journey, phase.waypoints);
