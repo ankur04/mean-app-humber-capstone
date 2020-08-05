@@ -35,7 +35,7 @@ export class JourneyComponent implements OnInit {
       journeyId = sessionGetItem("journeyId");
       this.journeyId = sessionGetItem("journeyId");
     }
-    console.log("DON'T REMOVE\nJourney ID : " + journeyId);
+    console.log("Journey ID : " + journeyId);
     this.journeyService.getProgress(journeyId).subscribe((data) => {
       this.phase = data.phase;
       this.waypoint = data.waypoint;
